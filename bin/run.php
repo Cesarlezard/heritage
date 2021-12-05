@@ -2,27 +2,30 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$simpsons = [
-    new \App\Simpson('Bart'),
-    new \App\Simpson('Lisa'),
-    new \App\Simpson('Marge'),
-    new \App\Simpson('Homer'),
-];
+$bart = new \App\Simpson();
+$bart->name = 'Bart';
+$bart->dateOfBirth = '1980-02-23';
+$bart->gender = 'male';
 
-$pets = [
-    new \App\Pet('Petit Papa Noël', 'brown'),
-    new \App\Pet('Boule de neige', 'black'),
-];
+echo $bart->name . ' | ' . $bart->dateOfBirth . ' | ' . $bart->gender . "\n";
 
-$stuff = [
-    new \App\Stuff('painting'),
-    new \App\Stuff('sofa'),
-    new \App\Stuff('house'),
-    new \App\Stuff('soda'),
-];
+$lisa = new \App\Simpson();
+$lisa->name = 'Lisa';
+$lisa->dateOfBirth = '1982-05-09';
+$lisa->gender = 'female';
 
-$elements = array_merge($simpsons, $pets, $stuff);
+echo $lisa->name . ' | ' . $lisa->dateOfBirth . ' | ' . $lisa->gender . "\n";
 
-foreach ($elements as $element) {
-    echo $element . "\n";
-}
+$marge = new \App\Simpson();
+$marge->name = 'Marge';
+$marge->dateOfBirth = '1956-01-01';
+$marge->gender = 'female';
+
+echo $marge->name . ' | ' . $marge->dateOfBirth . ' | ' . $marge->gender . "\n";
+
+$homer = new \App\Simpson();
+$homer->name = 'Homer';
+$homer->dateOfBirth = '1956-05-12';
+$homer->gender = 'male';
+
+echo $homer->name . ' | ' . $homer->dateOfBirth . ' | ' . $homer->gender . "\n";

@@ -2,10 +2,9 @@
 
 namespace App;
 
-class Simpson extends Character
+class Simpson
 {
-    public function getName(): string
-    {
-        return $this->name . ' Simpson';
-    }
+    public $name;
+    public $dateOfBirth;
+    public $gender;
 }
