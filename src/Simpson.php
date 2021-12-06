@@ -7,10 +7,11 @@ use DateTime;
 class Simpson
 {
     public function __construct(
-        public string $name,
-        public DateTime $dateOfBirth,
-        public string $gender,
-        public int $hp = 50
+        private string $name,
+        private DateTime $dateOfBirth,
+        private string $gender,
+        public int $hp = 50,
+        private bool $sleeping = false
     ) {}
 
     public function getName(): string
@@ -34,18 +35,14 @@ class Simpson
     {
         switch ($food) {
             case 'donuts':
-                $this->hp = 100;
+                $this->addHealth(100);
                 break;
             case 'beer':
-                $this->hp += 5;
+                $this->addHealth(5);
                 break;
             case 'beans':
-                $this->hp  += 20;
+                $this->addHealth(20);
                 break;
-        }
-
-        if ($this->hp > 100) {
-            $this->hp = 100;
         }
     }
 
@@ -54,12 +51,39 @@ class Simpson
         $speed = 100 * $this->hp;
         $distance = $speed * $time;
 
-        $this->hp -=10;
-
-        if ($this->hp < 0) {
-            $this->hp = 0;
-        }
+        $this->addHealth(-10);
 
         return $distance;
+    }
+
+    public function wakeUp(): void
+    {
+        $this->sleeping = false;
+    }
+
+    public function isSleeping(): bool
+    {
+        return $this->sleeping;
+    }
+
+    private function addHealth(int $hp): void
+    {
+        $this->hp += $hp;
+
+        if ($this->hp > 100) {
+            $this->hp = 100;
+        }
+
+        if ($this->hp <= 0) {
+            $this->hp = 0;
+            $this->sleep();
+        }
+    }
+
+    private function sleep(): void
+    {
+        $this->addHealth(40);
+
+        $this->sleeping = true;
     }
 }

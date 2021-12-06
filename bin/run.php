@@ -25,6 +25,16 @@ echo "-------------\n";
 
 $bart->heal('beer');
 
-for($i = 0; $i < 10; $i++) {
-    echo $bart->hp . ' | ' . $bart->run(50) . ' | ' . $bart->hp .  "\n";
+for($i = 0; $i < 12; $i++) {
+    if ($i === 5) {
+        echo "Mange des graines...\n";
+        $bart->heal('beans');
+    }
+
+    echo 'vie avant la course: ' . $bart->hp . ' | distance: ' . $bart->run(50) . ' | vie après la course: ' . $bart->hp .  "\n";
+
+    if ($bart->isSleeping()) {
+        echo "Est en train de dormir...\n";
+        $bart->wakeUp();
+    }
 }
