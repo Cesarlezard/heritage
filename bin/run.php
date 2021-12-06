@@ -23,7 +23,7 @@ echo "Adresse : " . $house->address->getFully() . "\n";
 echo "---------\n";
 
 $factoryMembers = [
-    new \App\Simpson('Marge', new DateTime('1956-04-01'), 'female'),
+    $marge = new \App\Simpson('Marge', new DateTime('1956-04-01'), 'female'),
     new \App\Simpson('Homer', new DateTime('1956-05-12'), 'male'),
     new \App\Simpson('Diego', new DateTime('2001-01-24'), 'male'),
 ];
@@ -40,3 +40,9 @@ $factory = new \App\Factory("Simpson's factory", $factoryMembers, $factoryAddres
 echo "Nombre de membres : " . $factory->countMembers() . "\n";
 echo "Membre le plus vieux : " . $factory->getOlderMember()->getName() . "\n";
 echo "Adresse : " . $factory->address->getFully() . "\n";
+
+echo "---------\n";
+
+$city = new \App\City('Springfield', [$house, $factory]);
+
+echo "Population : " . $city->countPopulation() . "\n";
