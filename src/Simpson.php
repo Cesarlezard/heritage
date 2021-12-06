@@ -7,32 +7,30 @@ use DateTime;
 class Simpson
 {
     public function __construct(
-        public $name,
-        public $dateOfBirth,
-        public $gender,
-        public $hp = 50
+        public string $name,
+        public DateTime $dateOfBirth,
+        public string $gender,
+        public int $hp = 50
     ) {}
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name . ' Simpson';
     }
 
-    public function getAge()
+    public function getAge(): int
     {
-        $dateOfBirth = (new Datetime($this->dateOfBirth));
-
         $now = new Datetime();
 
-        return $dateOfBirth->diff($now)->y;
+        return $this->dateOfBirth->diff($now)->y;
     }
 
-    public function olderThan($simpson)
+    public function olderThan(Simpson $simpson): bool
     {
         return $this->getAge() > $simpson->getAge();
     }
 
-    public function heal($food)
+    public function heal(string $food): void
     {
         switch ($food) {
             case 'donuts':
@@ -51,7 +49,7 @@ class Simpson
         }
     }
 
-    public function run($time)
+    public function run(int $time): int
     {
         $speed = 100 * $this->hp;
         $distance = $speed * $time;

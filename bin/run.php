@@ -3,14 +3,22 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 $simpsons = [
-    $bart = new \App\Simpson('Bart', '1980-02-23', 'male'),
-    new \App\Simpson('Lisa', '1982-05-09', 'female'),
-    new \App\Simpson('Marge', '1956-04-01', 'female'),
-    new \App\Simpson('Homer', '1956-05-12', 'male'),
+    $bart = new \App\Simpson('Bart', new DateTime('1980-02-23'), 'male'),
+    $lisa = new \App\Simpson('Lisa', new DateTime('1982-05-09'), 'female'),
+    new \App\Simpson('Marge', new DateTime('1956-04-01'), 'female'),
+    new \App\Simpson('Homer', new DateTime('1956-05-12'), 'male'),
 ];
 
 foreach ($simpsons as $simpson) {
     echo $simpson->getName() . " | age: " . $simpson->getAge() . "\n";
+}
+
+echo "-------------\n";
+
+if ($bart->olderThan($lisa)) {
+    echo "Bart est plus vieux que Lisa\n";
+} else {
+    echo "Lisa est plus vieille que Bart\n";
 }
 
 echo "-------------\n";
