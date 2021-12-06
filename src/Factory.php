@@ -12,6 +12,7 @@ class Factory
     public function __construct(
         public string $name,
         private array $members,
+        public Address $address,
     ) {
         $this->setMembers($this->members);
     }
