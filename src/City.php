@@ -32,7 +32,7 @@ class City
     private function setPlots(array $plots)
     {
         foreach ($plots as $plot) {
-            if (! in_array(get_class($plot), [Factory::class, House::class])) {
+            if (! $plot instanceof Building) {
                 throw new Exception("Unexpected plot type.");
             }
         }
