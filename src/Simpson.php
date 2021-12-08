@@ -6,13 +6,25 @@ use DateTime;
 
 class Simpson
 {
+    public int $hp = 50;
+    private string $name;
+    private DateTime $dateOfBirth;
+    private string $gender;
+    private bool $sleeping;
+
     public function __construct(
-        private string $name,
-        private DateTime $dateOfBirth,
-        private string $gender,
-        public int $hp = 50,
-        private bool $sleeping = false
-    ) {}
+        string $name,
+        DateTime $dateOfBirth,
+        string $gender,
+        int $hp = 50,
+        bool $sleeping = false
+    ) {
+        $this->sleeping = $sleeping;
+        $this->hp = $hp;
+        $this->gender = $gender;
+        $this->dateOfBirth = $dateOfBirth;
+        $this->name = $name;
+    }
 
     public function getName(): string
     {

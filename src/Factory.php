@@ -9,12 +9,18 @@ class Factory
     const MIN_PEOPLE = 1;
     const MAX_PEOPLE = 50;
 
+    public string $name;
+    public Address $address;
+    private array $members;
+
     public function __construct(
-        public string $name,
-        private array $members,
-        public Address $address,
+        string $name,
+        array $members,
+        Address $address
     ) {
-        $this->setMembers($this->members);
+        $this->address = $address;
+        $this->name = $name;
+        $this->setMembers($members);
     }
 
     public function countMembers(): int
