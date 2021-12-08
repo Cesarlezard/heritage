@@ -24,7 +24,7 @@ echo "---------\n";
 
 $factoryMembers = [
     $marge = new \App\Simpson('Marge', new DateTime('1956-04-01'), 'female'),
-    new \App\Simpson('Homer', new DateTime('1956-05-12'), 'male'),
+    $homer = new \App\Simpson('Homer', new DateTime('1956-05-12'), 'male'),
     new \App\Simpson('Diego', new DateTime('2001-01-24'), 'male'),
 ];
 
@@ -46,3 +46,29 @@ echo "---------\n";
 $city = new \App\City('Springfield', [$house, $factory]);
 
 echo "Population : " . $city->countPopulation() . "\n";
+
+echo "---------\n";
+
+$grimes = new \App\Grimes('Frank', new DateTime('1962-01-01'), 'male');
+$leonard = new \App\Leonard('Lenny', new DateTime('1955-04-13'), 'male');
+
+echo sprintf(
+    "%s est-il copain avec %s: %s\n",
+    $homer->getName(),
+    $grimes->getName(),
+    $homer->isBuddyWith($grimes) ? 'oui' : 'non'
+);
+
+echo sprintf(
+    "%s est-il copain avec %s: %s\n",
+    $homer->getName(),
+    $leonard->getName(),
+    $homer->isBuddyWith($leonard) ? 'oui' : 'non'
+);
+
+echo sprintf(
+    "%s est-il copain avec %s: %s\n",
+    $grimes->getName(),
+    $leonard->getName(),
+    $grimes->isBuddyWith($leonard) ? 'oui' : 'non'
+);
